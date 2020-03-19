@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include "Map.h"
+#include "Player.h"
 
 
 class Level{
@@ -26,4 +27,6 @@ private:
 	Input* input;
 
 	Map map;
+	Player player;
+	sf::Texture sprite;
 };
