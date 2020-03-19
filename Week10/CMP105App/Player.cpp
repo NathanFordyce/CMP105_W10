@@ -50,3 +50,9 @@ void Player::update(float dt)
 		stepVelocity = sf::Vector2f(0, 0);
 	}
 }
+
+void Player::collisionResponse(GameObject* collider)
+{
+	velocity.y = 0;
+	setPosition(getPosition().x, collider->getPosition().y - getSize().y);
+}

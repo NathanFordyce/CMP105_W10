@@ -8,6 +8,7 @@ public:
 
 	void handleInput(float dt) override;
 	void update(float dt) override;
+	void collisionResponse(GameObject* collider);
 
 	float scale;
 	sf::Vector2f gravity;
