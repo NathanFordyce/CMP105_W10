@@ -9,7 +9,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	sprite.loadFromFile("gfx/Mushroom.png");
 	player.setTexture(&sprite);
 	player.setSize(sf::Vector2f(50, 50));
-	player.setPosition(0, 475);
+	player.setPosition(0, 200);
+	player.setCollisionBox(sf::FloatRect(0, 0, 50, 50));
 	player.setVelocity(100, 0);
 	player.setInput(input);
 }
@@ -37,6 +38,7 @@ void Level::render()
 	beginDraw();
 	window->draw(player);
 	map.render(window);
+	map.collisionDetection(&player);
 	endDraw();
 }
 

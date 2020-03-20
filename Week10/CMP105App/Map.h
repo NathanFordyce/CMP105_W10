@@ -10,9 +10,13 @@ public:
 	~Map();
 
 	void render(sf::RenderWindow* window);
+	void collisionDetection(GameObject* player);
 
+private:
 	TileMap tileMap;
 	Player player;
+	std::vector<GameObject> tiles;
+	std::vector<GameObject>* world;
 
 };
 

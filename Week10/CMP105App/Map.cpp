@@ -5,20 +5,7 @@ Map::Map()
 	tileMap.loadTexture("gfx/marioTiles.png");
 
 	GameObject tile;
-	std::vector<GameObject> tiles;
-	std::vector<GameObject>* world = tileMap.getLevel();
 
-	for (int i = 0; i < (int)world->size(); i++)
-	{
-		// if collision check should occur
-		if ((*world)[i].isCollider())
-		{
-			if (Collision::checkBoundingBox(&player, &(*world)[i]))
-			{
-				player.collisionResponse(&(*world)[i]);
-			}
-		}
-	}
 
 	for (int i = 0; i < 7; i++)
 	{
@@ -69,4 +56,21 @@ Map::~Map()
 void Map::render(sf::RenderWindow* window)
 {
 	tileMap.render(window);
+}
+
+void Map::collisionDetection(GameObject* player)
+{
+	world = tileMap.getLevel();
+
+	for (int i = 0; i < (int)world->size(); i++)
+	{
+		// if collision check should occur
+		if ((*world)[i].isCollider())
+		{
+			if (Collision::checkBoundingBox(player, &(*world)[i]))
+			{
+				player->collisionResponse(&(*world)[i]);
+			}
+		}
+	}
 }
